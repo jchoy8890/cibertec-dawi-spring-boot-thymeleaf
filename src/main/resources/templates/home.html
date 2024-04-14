@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2 th:text="${message}"></h2>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="doc: ${docentes}">
+        <td th:text="${doc.id}"></td>
+        <td th:text="${doc.name}"></td>
+        <td th:text="${doc.lastName}"></td>
+        <td th:text="${doc.email}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
