@@ -1,0 +1,63 @@
+package pe.cibertec.dawi.springbootthymeleaf.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pe.cibertec.dawi.springbootthymeleaf.model.DocenteEntity;
+import pe.cibertec.dawi.springbootthymeleaf.repository.DocenteRepository;
+
+import java.util.List;
+
+@Controller
+public class DocenteController {
+
+    @Autowired
+    private DocenteRepository docenteRepository;
+
+    @PostMapping("/delete")
+    public String deleteDocente(@ModelAttribute("docenteId") int docenteId, Model model) {
+
+//        System.out.println(docenteId);
+        docenteRepository.deleteById(docenteId);
+        List<DocenteEntity> docenteLst = docenteRepository.findAll();
+        model.addAttribute("docente", new DocenteEntity());
+        model.addAttribute("docentes", docenteLst);
+        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+
+        return "redirect:/inicio?success=Docente+eliminado+correctamente&action=delete";
+    }
+
+    @GetMapping({"/hola","/", "/inicio"})
+    public String retornaSaludo(Model model) {
+
+        List<DocenteEntity> docenteLst = docenteRepository.findAll();
+
+        for (DocenteEntity docente : docenteLst) {
+            System.out.println(docente.getName() + " " + docente.getLastName());
+        }
+
+        model.addAttribute("docentes", docenteLst);
+        model.addAttribute("docente", new DocenteEntity());
+        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+        return "home";
+    }
+
+    @PostMapping("/guardar")
+    public String guardarDocente(@ModelAttribute("docente") DocenteEntity docente, Model model){
+        docenteRepository.save(docente);
+
+
+        List<DocenteEntity> docenteLst = docenteRepository.findAll();
+        model.addAttribute("docentes", docenteLst);
+        model.addAttribute("docente", new DocenteEntity());
+        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+
+        return "redirect:/inicio?success=Docente+agregado+correctamente&action=save";
+
+    }
+
+
+}
