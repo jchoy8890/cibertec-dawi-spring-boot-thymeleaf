@@ -25,7 +25,7 @@ public class DocenteController {
         List<DocenteEntity> docenteLst = docenteRepository.findAll();
         model.addAttribute("docente", new DocenteEntity());
         model.addAttribute("docentes", docenteLst);
-        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+        model.addAttribute("message", "Formulario para CRUD Docente");
 
         return "redirect:/inicio?success=Docente+eliminado+correctamente&action=delete";
     }
@@ -41,7 +41,7 @@ public class DocenteController {
 
         model.addAttribute("docentes", docenteLst);
         model.addAttribute("docente", new DocenteEntity());
-        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+        model.addAttribute("message", "Formulario para CRUD Docente");
         return "home";
     }
 
@@ -53,7 +53,7 @@ public class DocenteController {
         List<DocenteEntity> docenteLst = docenteRepository.findAll();
         model.addAttribute("docentes", docenteLst);
         model.addAttribute("docente", new DocenteEntity());
-        model.addAttribute("message", "Desde Lima Perú. Saludos a todo el mundo");
+        model.addAttribute("message", "Formulario para CRUD Docente");
 
         return "redirect:/inicio?success=Docente+agregado+correctamente&action=save";
 
