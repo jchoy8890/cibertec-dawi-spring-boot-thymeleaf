@@ -29,52 +29,42 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Editar</th>
+                <th>Edicion</th>
+                <th>Año</th>
                 <th>Eliminar</th>
             </tr>
 
             </thead>
-            <tr th:each="doc: ${docentes}">
-                <td th:text="${doc.id}"></td>
-                <td th:text="${doc.name}"></td>
-                <td th:text="${doc.lastName}"></td>
-                <td th:text="${doc.email}"></td>
+            <tr th:each="cur: ${cursos}">
+                <td th:text="${cur.id}"></td>
+                <td th:text="${cur.name}"></td>
+                <td th:text="${cur.edition}"></td>
+                <td th:text="${cur.year}"></td>
                 <td>
-                    <form th:method="post" th:action="@{/docente/edit}">
-                        <input type="hidden" name="docenteId" th:value="${doc.id}"/>
-                        <input type="submit" class="btn btn-warning" th:value="Editar">
-                    </form>
-                </td>
-                <td>
-                    <form th:method="post" th:action="@{/docente/delete}">
-                        <input type="hidden" name="docenteId" th:value="${doc.id}"/>
+                    <form th:method="post" th:action="@{/curso/delete}">
+                        <input type="hidden" name="cursoId" th:value="${cur.id}"/>
                         <input type="submit" class="btn btn-danger" th:value="Eliminar"
-                               onclick="return confirm('¿Estás seguro de querer eliminar al docente?')">
+                               onclick="return confirm('¿Estás seguro de querer eliminar el curso?')">
                     </form>
                 </td>
             </tr>
         </table>
     </div>
     <div class="form-group col-md-5">
-        <form th:action="@{/docente/guardar}" method="post" th:object="${docente}">
-
-            <input type="hidden" th:field="*{id}">
-
+        <form th:action="@{/curso/guardar}" method="post" th:object="${curso}">
             <div class="form-group">
-                <label for="nombreDocente">Nombre Docente</label>
-                <input type="text" th:field="*{name}" class="form-control" required id="nombreDocente"
-                       placeholder="Juan">
+                <label for="nombreCurso">Nombre Curso</label>
+                <input type="text" th:field="*{name}" class="form-control" maxlength="50" required id="nombreCurso"
+                       placeholder="Desarrollo de Aplicaciones Web I">
             </div>
             <div class="form-group">
-                <label for="apellidoDocente">Apellido Docente</label>
-                <input type="text" th:field="*{lastName}" class="form-control" required id="apellidoDocente"
-                       placeholder="Perez">
+                <label for="edicionCurso">Edicion Curso</label>
+                <input type="number" min="1"  max="3" th:field="*{edition}" class="form-control" required id="edicionCurso"
+                       placeholder="1, 2, 3">
             </div>
             <div class="form-group">
-                <label for="correoDocente">Correo Docente</label>
-                <input type="text" th:field="*{email}" class="form-control" required id="correoDocente"
+                <label for="anioCurso">Año Curso</label>
+                <input type="number" th:field="*{year}" min="2001" max="2026" class="form-control" required id="anioCurso"
                        placeholder="username@correo.com">
             </div>
             <div th:if="${param.success != null}" class="alert alert-warning alert-dismissible" role="alert"
