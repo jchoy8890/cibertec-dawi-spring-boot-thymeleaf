@@ -30,7 +30,7 @@ public class DocenteController {
         return "redirect:/inicio?success=Docente+eliminado+correctamente&action=delete";
     }
 
-    @GetMapping({"/hola","/", "/inicio"})
+    @GetMapping({"/docentes", "/", "/inicio"})
     public String retornaSaludo(Model model) {
 
         List<DocenteEntity> docenteLst = docenteRepository.findAll();
@@ -42,11 +42,19 @@ public class DocenteController {
         model.addAttribute("docentes", docenteLst);
         model.addAttribute("docente", new DocenteEntity());
         model.addAttribute("message", "Formulario para CRUD Docente");
+        return "index";
+    }
+
+
+    @GetMapping("/home")
+    public String home() {
         return "home";
     }
 
+
+
     @PostMapping("/guardar")
-    public String guardarDocente(@ModelAttribute("docente") DocenteEntity docente, Model model){
+    public String guardarDocente(@ModelAttribute("docente") DocenteEntity docente, Model model) {
         docenteRepository.save(docente);
 
 
