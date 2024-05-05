@@ -2,10 +2,7 @@ package pe.cibertec.dawi.springbootthymeleaf.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.cibertec.dawi.springbootthymeleaf.model.CursoEntity;
 import pe.cibertec.dawi.springbootthymeleaf.repository.CursoRepository;
 
@@ -34,6 +31,8 @@ public class RestCursoController {
     public String saludoStr() {
         return "Hola Cibertec";
     }
+
+
 
 
 }

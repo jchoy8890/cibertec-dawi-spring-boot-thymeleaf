@@ -1,25 +1,21 @@
 package pe.cibertec.dawi.springbootthymeleaf.config;
 
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig {
-
-    @Bean
-    public SecurityFilterChain config(HttpSecurity http) throws Exception {
-
-        return http.authorizeHttpRequests(auth ->
-                auth.requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v2/**").permitAll()
-        ).build();
-    }
+//
+//    @Bean
+//    public SecurityFilterChain config(HttpSecurity http) throws Exception {
+//
+//        return http.authorizeHttpRequests(auth ->
+////                auth.requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
+////                        .requestMatchers(HttpMethod.GET, "/api/v2/**").permitAll()
+////                        .requestMatchers(HttpMethod.POST, "/api/v2/docente").permitAll()
+//                auth.requestMatchers(HttpMethod.POST).permitAll()
+//                .requestMatchers(HttpMethod.GET).permitAll()
+//        ).build();
+//    }
 
 
 }
