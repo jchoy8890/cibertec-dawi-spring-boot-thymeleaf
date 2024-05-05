@@ -1,7 +1,11 @@
 package pe.cibertec.dawi.springbootthymeleaf.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Getter
@@ -12,6 +16,7 @@ import lombok.*;
 @Entity(name = "docenteCibertec")
 @Table(name = "docente")
 public class DocenteEntity {
+
 
     @Id
     @Column(name = "id")
@@ -27,7 +32,9 @@ public class DocenteEntity {
     @Column(name = "email")
     private String email;
 
-//    @OneToMany(mappedBy = "docenteEntity", cascade = CascadeType.ALL)
-//    private List<CursoEntity> cursos;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "docenteEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CursoEntity> cursos;
 
 }
